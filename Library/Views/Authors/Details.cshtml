@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Library.Models.Author
+@using Library.Models
+@using System.Collections.Generic;
+
+<h2>Author Details</h2>
+<hr>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Biography): @Html.DisplayFor(model => model.Biography)</h3>
+
+<p>@Html.ActionLink("Back to author list", "Index")</p>

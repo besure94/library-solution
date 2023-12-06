@@ -42,5 +42,11 @@ namespace Library.Controllers
       }
     }
 
+    public ActionResult Details(int id)
+    {
+      Author thisAuthor = _db.Authors.FirstOrDefault(author => author.AuthorId == id);
+      return View(thisAuthor);
+    }
+
   }
 }
