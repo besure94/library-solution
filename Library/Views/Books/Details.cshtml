@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Library.Models
+@model Library.Models.Book
+
+<h2>Book Details</h2>
+<hr>
+<h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</h3>
+<h3>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</h3>
+<h3>@Html.DisplayNameFor(model => model.Genre): @Html.DisplayFor(model => model.Genre)</h3>
+<h3>@Html.DisplayNameFor(model => model.Pages): @Html.DisplayFor(model => model.Pages)</h3>
+
+<p>@Html.ActionLink("Back to book list", "Index")</p>
