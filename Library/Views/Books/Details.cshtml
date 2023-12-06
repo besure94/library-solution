@@ -13,5 +13,5 @@
 <h3>@Html.DisplayNameFor(model => model.Genre): @Html.DisplayFor(model => model.Genre)</h3>
 <h3>@Html.DisplayNameFor(model => model.Pages): @Html.DisplayFor(model => model.Pages)</h3>
 
-<p>@Html.ActionLink("Edit this book", "Edit")</p>
+<p>@Html.ActionLink("Edit this book", "Edit", new { id = Model.BookId })</p>
 <p>@Html.ActionLink("Back to book list", "Index")</p>

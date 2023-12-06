@@ -52,5 +52,20 @@ namespace Library.Controllers
       return View(thisBook);
     }
 
+    [HttpPost]
+    public ActionResult Edit(Book book)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(book);
+      }
+      else
+      {
+        _db.Books.Update(book);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
+    }
+
   }
 }
