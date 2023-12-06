@@ -4,6 +4,7 @@
 
 @using Library.Models
 @model Library.Models.Book
+@* @using System.Collections.Generic; *@
 
 <h2>Book Details</h2>
 <hr>
@@ -13,6 +14,24 @@
 <h3>@Html.DisplayNameFor(model => model.Genre): @Html.DisplayFor(model => model.Genre)</h3>
 <h3>@Html.DisplayNameFor(model => model.Pages): @Html.DisplayFor(model => model.Pages)</h3>
 
+@* <p>@Model.AuthorBook.AuthorBookId</p> *@
+
+@if (@Model.JoinEntities.Count == 0)
+{
+  <h4>This book does not have multiple authors.</h4>
+}
+else
+{
+  <h4>This book has multiple authors:</h4>
+  <ul>
+    @foreach (AuthorBook join in Model.JoinEntities)
+    {
+      <li>@join.Author.Name</li>
+    }
+  </ul>
+}
+
 <p>@Html.ActionLink("Edit this book", "Edit", new { id = Model.BookId })</p>
+<p>@Html.ActionLink("Add another author to this book", "AddAuthor", new { id = Model.BookId })</p>
 <p>@Html.ActionLink("Delete this book", "Delete", new { id = Model.BookId })</p>
 <p>@Html.ActionLink("Back to book list", "Index")</p>

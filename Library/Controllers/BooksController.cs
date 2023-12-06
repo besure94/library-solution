@@ -42,7 +42,10 @@ namespace Library.Controllers
 
     public ActionResult Details(int id)
     {
-      Book thisBook = _db.Books.FirstOrDefault(book => book.BookId == id);
+      Book thisBook = _db.Books
+      .Include(book => book.JoinEntities)
+      .ThenInclude(book => book.Author)
+      .FirstOrDefault(book => book.BookId == id);
       return View(thisBook);
     }
 
@@ -80,6 +83,27 @@ namespace Library.Controllers
       _db.Books.Remove(thisBook);
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    public ActionResult AddAuthor(int id)
+    {
+      Book thisBook = _db.Books.FirstOrDefault(books => books.BookId == id);
+      ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "Name");
+      return View(thisBook);
+    }
+
+    [HttpPost]
+    public ActionResult AddAuthor(Book book, int authorId)
+    {
+      #nullable enable
+      AuthorBook? joinEntity = _db.AuthorBooks.FirstOrDefault(join => join.AuthorBookId == authorId && join.BookId == book.BookId);
+      #nullable disable
+      if (joinEntity == null && authorId != 0)
+      {
+        _db.AuthorBooks.Add(new AuthorBook() { AuthorId = authorId, BookId = book.BookId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = book.BookId });
     }
 
   }
