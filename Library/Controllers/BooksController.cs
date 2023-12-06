@@ -22,7 +22,7 @@ namespace Library.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "Name");
+      // ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "Name");
       return View();
     }
 
@@ -31,7 +31,7 @@ namespace Library.Controllers
     {
       if (!ModelState.IsValid)
       {
-        ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "Name");
+        // ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "Name");
         return View(book);
       }
       else
