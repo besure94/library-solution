@@ -7,7 +7,7 @@
 
 <h4>Create a new book</h4>
 
-@* <p>@Html.ValidationMessageFor(model => model.AuthorId, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p> *@
+<p>@Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
@@ -15,6 +15,10 @@
 
 @using (Html.BeginForm())
 {
+  @Html.LabelFor(model => model.Author)
+  @Html.TextBoxFor(model => model.Author)
+  <br>
+  <br>
   @Html.LabelFor(model => model.Title)
   @Html.TextBoxFor(model => model.Title)
   <br>
@@ -29,10 +33,6 @@
   <br>
   @Html.LabelFor(model => model.Pages)
   @Html.TextBoxFor(model => model.Pages)
-  @* <br>
-  <br>
-  @Html.LabelFor(model => model.Author)
-  @Html.DropDownList("AuthorId") *@
   <br>
   <br>
   <input type="submit" value="Create new book" class="btn btn-primary"/>

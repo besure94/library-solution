@@ -6,9 +6,6 @@ namespace Library.Models
 {
   public class Book
   {
-
-    // [Required(ErrorMessage = "A book must have an author. Have you created an author yet?")]
-    // public int AuthorId { get; set; }
     public int BookId { get; set; }
 
     [Required(ErrorMessage = "Book must have an author.")]
@@ -27,7 +24,6 @@ namespace Library.Models
     [Required(ErrorMessage = "Book must have a number of pages.")]
     [Range(1, 2023, ErrorMessage = "Year must be between 1 and 2023.")]
     public int Pages { get; set; }
-    // public Author Author { get; set; }
     public List<AuthorBook> JoinEntities { get; }
 
   }
