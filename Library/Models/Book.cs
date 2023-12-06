@@ -14,16 +14,16 @@ namespace Library.Models
     [Required(ErrorMessage = "Book must have a title.")]
     public string Title { get; set; }
 
-    [Required(ErrorMessage = "Book must have a year.")]
+    [Required(ErrorMessage = "Book must have a publish year.")]
     [Range(1, 2023, ErrorMessage = "Year must be between 1 and 2023.")]
-    public int Year { get; set; }
+    public int? Year { get; set; }
 
     [Required(ErrorMessage = "Book must have a genre.")]
     public string Genre { get; set; }
 
     [Required(ErrorMessage = "Book must have a number of pages.")]
     [Range(1, 2023, ErrorMessage = "Year must be between 1 and 2023.")]
-    public int Pages { get; set; }
+    public int? Pages { get; set; }
     public List<AuthorBook> JoinEntities { get; }
 
   }

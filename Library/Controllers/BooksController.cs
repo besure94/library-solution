@@ -46,5 +46,11 @@ namespace Library.Controllers
       return View(thisBook);
     }
 
+    public ActionResult Edit(int id)
+    {
+      Book thisBook = _db.Books.FirstOrDefault(books => books.BookId == id);
+      return View(thisBook);
+    }
+
   }
 }

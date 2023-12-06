@@ -1,0 +1,43 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Library.Models.Book
+
+<h2>Edit</h2>
+
+<h4>Edit this book: @Html.DisplayFor(model => model.Title)</h4>
+
+<p>@Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Pages, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.BookId)
+  @Html.LabelFor(model => model.Author)
+  @Html.TextBoxFor(model => model.Author)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Title)
+  @Html.TextBoxFor(model => model.Title)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Year)
+  @Html.TextBoxFor(model => model.Year)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Genre)
+  @Html.TextBoxFor(model => model.Genre)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Pages)
+  @Html.TextBoxFor(model => model.Pages)
+  <br>
+  <br>
+  <input type="submit" value="Edit book" class="btn btn-primary"/>
+}
+<br>
+<p>@Html.ActionLink("View book list", "Index")</p>
