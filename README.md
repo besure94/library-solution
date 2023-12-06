@@ -1,6 +1,6 @@
 Project Outline:
 
-// Will need two users: librarians and patrons, with a model/table for each.
+// Will need two users: librarians and patrons.
 
 // Will need a Book model (table) with info like title, year published, genre, pages, etc.
 
