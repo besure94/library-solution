@@ -26,5 +26,21 @@ namespace Library.Controllers
       return View();
     }
 
+    [HttpPost]
+    public ActionResult Create(Book book)
+    {
+      if (!ModelState.IsValid)
+      {
+        ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "Name");
+        return View(book);
+      }
+      else
+      {
+        _db.Books.Add(book);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
+    }
+
   }
 }
