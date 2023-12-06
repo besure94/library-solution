@@ -19,5 +19,12 @@ namespace Library.Controllers
     {
       return View(_db.Books.ToList());
     }
+
+    public ActionResult Create()
+    {
+      ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "Name");
+      return View();
+    }
+
   }
 }
