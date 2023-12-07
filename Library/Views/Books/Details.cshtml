@@ -14,8 +14,6 @@
 <h3>@Html.DisplayNameFor(model => model.Genre): @Html.DisplayFor(model => model.Genre)</h3>
 <h3>@Html.DisplayNameFor(model => model.Pages): @Html.DisplayFor(model => model.Pages)</h3>
 
-@* <p>@Model.AuthorBook.AuthorBookId</p> *@
-
 @if (@Model.JoinEntities.Count == 0)
 {
   <h4>This book does not have multiple authors.</h4>
@@ -27,6 +25,11 @@ else
     @foreach (AuthorBook join in Model.JoinEntities)
     {
       <li>@join.Author.Name</li>
+      @using (Html.BeginForm("DeleteJoin", "Books"))
+      {
+        @Html.Hidden("joinId", @join.AuthorBookId)
+        <input type="submit" value="Delete"/>
+      }
     }
   </ul>
 }
