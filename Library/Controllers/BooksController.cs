@@ -164,11 +164,11 @@ namespace Library.Controllers
       return View(thisBook);
     }
 
-    [HttpPost, ActionName("Checkout")]
-    public ActionResult CheckoutConfirmed(int id)
+    [HttpPost]
+    public ActionResult Checkout(Book book)
     {
-      Book thisBook = _db.Books.FirstOrDefault(book => book.BookId == id);
-      _db.Books.Remove(thisBook);
+      book.CheckedOut = true;
+      _db.Books.Update(book);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

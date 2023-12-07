@@ -8,10 +8,18 @@
 
 <h3>Would you like to check out this book?</h3>
 
-<h4>@Html.DisplayFor(model => model.Title)</h4>
+<h4>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</h4>
+<h4>@Html.DisplayNameFor(model => model.Author): @Html.DisplayFor(model => model.Author)</h4>
 
 @using (Html.BeginForm())
 {
+  @Html.HiddenFor(model => model.BookId)
+  @Html.HiddenFor(model => model.Author)
+  @Html.HiddenFor(model => model.Title)
+  @Html.HiddenFor(model => model.Year)
+  @Html.HiddenFor(model => model.Genre)
+  @Html.HiddenFor(model => model.Pages)
+  @Html.HiddenFor(model => model.CheckedOut)
   <input type="submit" class="btn btn-primary" value="Checkout book"/>
 }
 <br>
