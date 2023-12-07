@@ -24,6 +24,7 @@ namespace Library.Models
     [Required(ErrorMessage = "Book must have a number of pages.")]
     [Range(1, 2023, ErrorMessage = "Year must be between 1 and 2023.")]
     public int? Pages { get; set; }
+    public bool CheckedOut { get; set; } = false;
     public List<AuthorBook> JoinEntities { get; }
 
   }
