@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Library.Models.Book
+
+<h4>Search for a book by author</h4>
+<p>For example: Ernest Hemingway, Cormac McCarthy, H.P. Lovecraft, etc.</p>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Author)
+  @Html.TextBoxFor(model => model.Author)
+  <input type="submit" class="btn btn-primary" value="Search by author"/>
+}
+<p>@Html.ActionLink("Back to index", "Index")</p>

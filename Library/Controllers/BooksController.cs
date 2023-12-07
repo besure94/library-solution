@@ -115,5 +115,24 @@ namespace Library.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult SearchAuthor()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult SearchAuthor(Book searchedAuthor)
+    {
+      Book thisBook = _db.Books.FirstOrDefault(book => book.Author == searchedAuthor.Author);
+      if (thisBook != null)
+      {
+        return RedirectToAction("Details", new { id = thisBook.BookId });
+      }
+      else
+      {
+        return RedirectToAction("SearchAuthor");
+      }
+    }
+
   }
 }
