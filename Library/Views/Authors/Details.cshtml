@@ -22,11 +22,11 @@ else
     @foreach (AuthorBook join in Model.JoinEntities)
     {
       <li>@join.Book.Title</li>
-      @* @using (Html.BeginForm("DeleteJoin", "Books"))
+      @using (Html.BeginForm("DeleteJoin", "Authors"))
       {
         @Html.Hidden("joinId", @join.AuthorBookId)
         <input type="submit" value="Delete"/>
-      } *@
+      }
     }
   </ul>
 }
