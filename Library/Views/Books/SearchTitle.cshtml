@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Library.Models.Book
+
+<h4>Search for a book by title</h4>
+<p>For example: The Great Gatsby, Animal Farm, Blood Meridian, etc.</p>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Title)
+  @Html.TextBoxFor(model => model.Title)
+  <input type="submit" value="Search by title" class="btn btn-primary"/>
+}
+<p>@Html.ActionLink("Back to index", "Index")</p>

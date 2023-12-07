@@ -134,5 +134,24 @@ namespace Library.Controllers
       }
     }
 
+    public ActionResult SearchTitle()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult SearchTitle(Book searchedTitle)
+    {
+      Book thisBook = _db.Books.FirstOrDefault(book => book.Title == searchedTitle.Title);
+      if (thisBook != null)
+      {
+        return RedirectToAction("Details", new { id = thisBook.BookId });
+      }
+      else
+      {
+        return RedirectToAction("SearchAuthor");
+      }
+    }
+
   }
 }
