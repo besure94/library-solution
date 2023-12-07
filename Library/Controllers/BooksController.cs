@@ -130,7 +130,7 @@ namespace Library.Controllers
       }
       else
       {
-        return RedirectToAction("SearchAuthor");
+        return RedirectToAction("NoResults");
       }
     }
 
@@ -149,8 +149,13 @@ namespace Library.Controllers
       }
       else
       {
-        return RedirectToAction("SearchAuthor");
+        return RedirectToAction("NoResults");
       }
+    }
+
+    public ActionResult NoResults()
+    {
+      return View();
     }
 
   }

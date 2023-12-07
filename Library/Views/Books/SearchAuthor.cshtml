@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Author)
-  @Html.TextBoxFor(model => model.Author)
+  @Html.TextBoxFor(model => model.Author, new { required="required" })
   <input type="submit" class="btn btn-primary" value="Search by author"/>
 }
-<p>@Html.ActionLink("Back to index", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
