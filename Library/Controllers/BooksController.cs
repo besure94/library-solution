@@ -158,9 +158,19 @@ namespace Library.Controllers
       return View();
     }
 
-    public ActionResult Checkout()
+    public ActionResult Checkout(int id)
     {
-      return View();
+      Book thisBook = _db.Books.FirstOrDefault(book => book.BookId == id);
+      return View(thisBook);
+    }
+
+    [HttpPost, ActionName("Checkout")]
+    public ActionResult CheckoutConfirmed(int id)
+    {
+      Book thisBook = _db.Books.FirstOrDefault(book => book.BookId == id);
+      _db.Books.Remove(thisBook);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
 
   }
