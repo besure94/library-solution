@@ -11,4 +11,26 @@
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <h3>@Html.DisplayNameFor(model => model.Biography): @Html.DisplayFor(model => model.Biography)</h3>
 
+@if (@Model.JoinEntities.Count == 0)
+{
+  <h4>There are no books currently available by this author.</h4>
+}
+else
+{
+  <h4>The following books are available by this author:</h4>
+  <ul>
+    @foreach (AuthorBook join in Model.JoinEntities)
+    {
+      <li>@join.Book.Title</li>
+      @* @using (Html.BeginForm("DeleteJoin", "Books"))
+      {
+        @Html.Hidden("joinId", @join.AuthorBookId)
+        <input type="submit" value="Delete"/>
+      } *@
+    }
+  </ul>
+}
+
+
+<p>@Html.ActionLink("Add another book to this author", "AddBook", new { id = Model.AuthorId })</p>
 <p>@Html.ActionLink("Back to author list", "Index")</p>
