@@ -167,6 +167,7 @@ namespace Library.Controllers
     [HttpPost]
     public ActionResult Checkout(Book book)
     {
+      book.Copies = book.Copies - 1;
       _db.Books.Update(book);
       _db.SaveChanges();
       return RedirectToAction("Index");
