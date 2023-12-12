@@ -20,7 +20,7 @@ else
   <ul>
     @foreach (Checkout join in Model.JoinClasses)
     {
-      <li>@join.Book.Title:
+      <li>@join.Book.Title by @join.Book.Author:
       <br>
       Checked out on @join.CheckoutDate
       <br>
