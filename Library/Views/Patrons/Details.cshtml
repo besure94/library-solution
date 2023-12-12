@@ -10,4 +10,24 @@
 <h3>Name: @Html.DisplayFor(model => model.Name)</h3>
 <h3>Phone number: @Html.DisplayFor(model => model.PhoneNumber)</h3>
 
+@if (@Model.JoinClasses.Count == 0)
+{
+  <h4>This patron has not checked out any books yet.</h4>
+}
+else
+{
+  <h4>This patron has checked out the following books:</h4>
+  <ul>
+    @foreach (Checkout join in Model.JoinClasses)
+    {
+      <li>@join.Book.Title:
+      <br>
+      Checked out on @join.CheckoutDate
+      <br>
+      Due back on @join.DueDate
+      </li>
+    }
+  </ul>
+}
+
 <p>@Html.ActionLink("Back to patron list", "Index")</p>

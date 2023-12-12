@@ -42,7 +42,10 @@ namespace Library.Controllers
 
     public ActionResult Details(int id)
     {
-      Patron thisPatron = _db.Patrons.FirstOrDefault(patron => patron.PatronId == id);
+      Patron thisPatron = _db.Patrons
+      .Include(patron => patron.JoinClasses)
+      .ThenInclude(patron => patron.Book)
+      .FirstOrDefault(patron => patron.PatronId == id);
       return View(thisPatron);
     }
   }
