@@ -69,8 +69,9 @@ namespace Library.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<bool>("CheckedOut")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<int?>("Copies")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.Property<string>("Genre")
                         .IsRequired()
@@ -93,25 +94,6 @@ namespace Library.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Library.Models.Copy", b =>
-                {
-                    b.Property<int>("CopyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Copies")
-                        .HasColumnType("int");
-
-                    b.HasKey("CopyId");
-
-                    b.HasIndex("BookId");
-
-                    b.ToTable("Copies");
-                });
-
             modelBuilder.Entity("Library.Models.AuthorBook", b =>
                 {
                     b.HasOne("Library.Models.Author", "Author")
@@ -131,17 +113,6 @@ namespace Library.Migrations
                     b.Navigation("Book");
                 });
 
-            modelBuilder.Entity("Library.Models.Copy", b =>
-                {
-                    b.HasOne("Library.Models.Book", "Book")
-                        .WithMany("Copies")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-                });
-
             modelBuilder.Entity("Library.Models.Author", b =>
                 {
                     b.Navigation("JoinEntities");
@@ -149,8 +120,6 @@ namespace Library.Migrations
 
             modelBuilder.Entity("Library.Models.Book", b =>
                 {
-                    b.Navigation("Copies");
-
                     b.Navigation("JoinEntities");
                 });
 #pragma warning restore 612, 618

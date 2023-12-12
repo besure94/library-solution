@@ -11,3 +11,9 @@ Project Outline:
 //  Will need a one-to-many relationship between a book and copies (create a Copies model/table)
 
 // Will need a checkouts table that joins Patron and Copies.
+
+Changes:
+
+// Allow patron to check out a book only if there is more than one copy.
+    * add checkout date and due date property to checkout model
+    * change checkout table to join patrons and books and design it to interact with copies.

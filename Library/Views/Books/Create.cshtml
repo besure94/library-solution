@@ -12,6 +12,7 @@
 <p>@Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Pages, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Copies, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
 @using (Html.BeginForm())
 {
@@ -33,6 +34,10 @@
   <br>
   @Html.LabelFor(model => model.Pages)
   @Html.TextBoxFor(model => model.Pages)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Copies)
+  @Html.TextBoxFor(model => model.Copies)
   <br>
   <br>
   <input type="submit" value="Create new book" class="btn btn-primary"/>

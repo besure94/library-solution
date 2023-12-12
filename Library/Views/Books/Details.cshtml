@@ -13,15 +13,7 @@
 <h3>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</h3>
 <h3>@Html.DisplayNameFor(model => model.Genre): @Html.DisplayFor(model => model.Genre)</h3>
 <h3>@Html.DisplayNameFor(model => model.Pages): @Html.DisplayFor(model => model.Pages)</h3>
-
-@if (@Model.CheckedOut == false)
-{
-  <h4>This book is in stock.</h4>
-}
-else
-{
-  <h4>This book has been checked out.</h4>
-}
+<h3>@Html.DisplayNameFor(model => model.Copies): @Html.DisplayFor(model => model.Copies)</h3>
 
 @if (@Model.JoinEntities.Count == 0)
 {

@@ -35,23 +35,19 @@ namespace Library.Migrations
                 {
                     BookId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AuthorId = table.Column<int>(type: "int", nullable: false),
+                    Author = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Title = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Year = table.Column<int>(type: "int", nullable: false),
                     Genre = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Pages = table.Column<int>(type: "int", nullable: false)
+                    Pages = table.Column<int>(type: "int", nullable: false),
+                    Copies = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Books", x => x.BookId);
-                    table.ForeignKey(
-                        name: "FK_Books_Authors_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "Authors",
-                        principalColumn: "AuthorId",
-                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -91,11 +87,6 @@ namespace Library.Migrations
                 name: "IX_AuthorBooks_BookId",
                 table: "AuthorBooks",
                 column: "BookId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Books_AuthorId",
-                table: "Books",
-                column: "AuthorId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -104,10 +95,10 @@ namespace Library.Migrations
                 name: "AuthorBooks");
 
             migrationBuilder.DropTable(
-                name: "Books");
+                name: "Authors");
 
             migrationBuilder.DropTable(
-                name: "Authors");
+                name: "Books");
         }
     }
 }
