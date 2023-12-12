@@ -161,16 +161,26 @@ namespace Library.Controllers
     public ActionResult Checkout(int id)
     {
       Book thisBook = _db.Books.FirstOrDefault(book => book.BookId == id);
+      ViewBag.PatronId = new SelectList(_db.Patrons, "PatronId", "Name");
       return View(thisBook);
     }
 
     [HttpPost]
-    public ActionResult Checkout(Book book)
+    public ActionResult Checkout(Book book, int patronId)
     {
-      book.Copies = book.Copies - 1;
-      _db.Books.Update(book);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      if (book.Copies == 0)
+      {
+        return RedirectToAction("Checkout");
+      }
+      else
+      {
+        book.Copies = book.Copies - 1;
+        _db.Books.Update(book);
+        _db.SaveChanges();
+        _db.Checkouts.Add(new Checkout() { PatronId = patronId, BookId = book.BookId });
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 
   }
