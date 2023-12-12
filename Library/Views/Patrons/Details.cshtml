@@ -1,0 +1,13 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Library.Models
+@model Library.Models.Patron
+
+<h2>Patron Details</h2>
+<hr>
+<h3>Name: @Html.DisplayFor(model => model.Name)</h3>
+<h3>Phone number: @Html.DisplayFor(model => model.PhoneNumber)</h3>
+
+<p>@Html.ActionLink("Back to patron list", "Index")</p>
