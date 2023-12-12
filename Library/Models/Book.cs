@@ -29,6 +29,7 @@ namespace Library.Models
     [Range(1, 1000, ErrorMessage = "You must enter at least one copy to create a book. Our system can only accommodate 1,000 copies.")]
     public int? Copies { get; set; }
     public List<AuthorBook> JoinEntities { get; }
+    public List<Checkout> JoinClasses { get; }
 
   }
 }
