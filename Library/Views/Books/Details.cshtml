@@ -35,7 +35,15 @@ else
   </ul>
 }
 
-<p>@Html.ActionLink("Check out this book", "Checkout", new { id = Model.BookId })</p>
+@if (@Model.Copies >= 1)
+{
+  <p>@Html.ActionLink("Check out this book", "Checkout", new { id = Model.BookId })</p>
+}
+else
+{
+  <h4>There are no extra copies of this book available. Please check again in the future!</h4>
+}
+
 <p>@Html.ActionLink("Edit this book", "Edit", new { id = Model.BookId })</p>
 <p>@Html.ActionLink("Add another author to this book", "AddAuthor", new { id = Model.BookId })</p>
 <p>@Html.ActionLink("Delete this book", "Delete", new { id = Model.BookId })</p>
