@@ -38,7 +38,7 @@ namespace Library.Controllers
       }
       else
       {
-        ApplicationUser user = new ApplicationUser { UserName = model.Email };
+        ApplicationUser user = new ApplicationUser { UserName = model.Email, Librarian = model.Librarian };
         IdentityResult result = await _userManager.CreateAsync(user, model.Password);
         if (result.Succeeded)
         {

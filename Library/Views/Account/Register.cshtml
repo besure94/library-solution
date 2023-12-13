@@ -31,13 +31,13 @@
   @Html.LabelFor(user => user.Librarian)
   <br>
   @Html.RadioButtonFor(user => user.Librarian, true, new {id = "librarian-true" })
-  @Html.Label("librarian-true", "Librarian")
+  @Html.Label("librarian-true", "Yes")
   <br>
   @Html.RadioButtonFor(user => user.Librarian, false, new {id = "librarian-false" })
-  @Html.Label("librarian-true", "Patron")
+  @Html.Label("librarian-false", "No")
   <br>
   <br>
-  <input type="submit" value="Register" />
+  <input type="submit" value="Register" class="btn btn-primary"/>
 }
 
 <p>@Html.ActionLink("Back to accounts page", "Index")</p>

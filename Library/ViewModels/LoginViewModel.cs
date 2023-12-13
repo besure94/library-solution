@@ -13,8 +13,5 @@ namespace Library.ViewModels
     [DataType(DataType.Password)]
     public string Password { get; set; }
 
-    [Required]
-    [Display(Name = "Are you a librarian or patron?")]
-    public bool Librarian { get; set; }
   }
 }
