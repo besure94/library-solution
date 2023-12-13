@@ -19,7 +19,8 @@ namespace Library.ViewModels
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
 
-    [Display(Name = "Are you a librarian?")]
+    [Required]
+    [Display(Name = "Are you a librarian or patron?")]
     public bool Librarian { get; set; }
   }
 }

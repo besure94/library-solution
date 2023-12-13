@@ -29,7 +29,12 @@
   <br>
   <br>
   @Html.LabelFor(user => user.Librarian)
-  @Html.DisplayFor(user => user.Librarian)
+  <br>
+  @Html.RadioButtonFor(user => user.Librarian, true, new {id = "librarian-true" })
+  @Html.Label("librarian-true", "Librarian")
+  <br>
+  @Html.RadioButtonFor(user => user.Librarian, false, new {id = "librarian-false" })
+  @Html.Label("librarian-true", "Patron")
   <br>
   <br>
   <input type="submit" value="Register" />
