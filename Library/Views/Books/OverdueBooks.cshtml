@@ -3,24 +3,18 @@
 }
 
 @using Library.Models
-@* @using System.Collections.Generic; *@
-@* @model Library.Models.Book *@
-@using System;
+@model List<Checkout>
 
 <h2>Overdue Books</h2>
 <hr>
 
-@if (@Model.JoinClasses.OverdueDate > @Model.JoinClasses.DueDate)
+@if (@Model.Count != 0)
 {
   <h4>The following books are overdue:</h4>
   <ul>
-    @foreach (Checkout join in Model.Checkout.JoinClasses)
+    @foreach (Checkout checkout in Model)
     {
-      <li>@join.Book.Title:
-        <br>
-        Checked out by @join.Patron.Name on @join.CheckoutDate
-        <br>Due on @join.DueDate
-      </li>
+      <li>@checkout.Book.Title - @Html.ActionLink($"{@checkout.Patron.Name}", "Details", "Patrons", new { id = checkout.Patron.PatronId })</li>
     }
   </ul>
 }
@@ -28,4 +22,7 @@ else
 {
   <h4>There are no overdue books.</h4>
 }
+
+<p>@Html.ActionLink("Back to book list", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
 

@@ -14,6 +14,8 @@ Project Outline:
 
 Changes:
 
-// Allow patron to check out a book only if there is more than one copy.
-    * add checkout date and due date property to checkout model
-    * change checkout table to join patrons and books and design it to interact with copies.
+// Grab every record from checkout table where overdue date is less than DateTime.Now
+    * include book title and patron name
+    *
+
+// add boolean property for librarian

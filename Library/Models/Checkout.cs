@@ -11,7 +11,6 @@ namespace Library.Models
     public int BookId { get; set; }
     public DateTime CheckoutDate { get; set; } = DateTime.Now;
     public DateTime DueDate { get; set; } = DateTime.Now.AddDays(14);
-    public DateTime OverdueDate { get; set; } = DateTime.Now.AddDays(15);
     public Book Book { get; set; }
 
   }

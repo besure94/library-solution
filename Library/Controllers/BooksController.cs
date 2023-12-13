@@ -187,7 +187,11 @@ namespace Library.Controllers
 
     public ActionResult OverdueBooks()
     {
-      return View();
+      List<Checkout> checkouts = _db.Checkouts
+      .Include(checkout => checkout.Book)
+      .Include(checkout => checkout.Patron)
+      .Where(checkout => checkout.DueDate < DateTime.Now).ToList();
+      return View(checkouts);
     }
 
   }
