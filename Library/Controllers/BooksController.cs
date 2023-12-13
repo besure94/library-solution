@@ -6,14 +6,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 using System;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace Library.Controllers
 {
   public class BooksController : Controller
   {
     private readonly LibraryContext _db;
-    public BooksController(LibraryContext db)
+    private readonly UserManager<ApplicationUser> _userManager;
+    public BooksController(UserManager<ApplicationUser> userManager, LibraryContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
@@ -22,9 +27,18 @@ namespace Library.Controllers
       return View(_db.Books.ToList());
     }
 
-    public ActionResult Create()
+    public async Task<ActionResult> Create()
     {
-      return View();
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      if (currentUser.Librarian == true)
+      {
+        return View();
+      }
+      else
+      {
+        return RedirectToAction("Index");
+      }
     }
 
     [HttpPost]

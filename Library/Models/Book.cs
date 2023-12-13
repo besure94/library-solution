@@ -30,6 +30,7 @@ namespace Library.Models
     public int? Copies { get; set; }
     public List<AuthorBook> JoinEntities { get; }
     public List<Checkout> JoinClasses { get; }
+    public ApplicationUser User { get; set; }
 
   }
 }
