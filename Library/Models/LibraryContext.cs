@@ -5,7 +5,7 @@ using System.Diagnostics.Eventing.Reader;
 
 namespace Library.Models
 {
-  public class LibraryContext : DbContext
+  public class LibraryContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Author> Authors { get; set; }
     public DbSet<Book> Books { get; set; }
